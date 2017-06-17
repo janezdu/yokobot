@@ -62,33 +62,45 @@ class Weight(Enum):
 	H = 1.7
 	M = 1.3
 	L = 1
+	N = 0
 
 class Target:
-	def __init__(self, attr, weights, tags, filt):
+	def __init__(self, attr=[], weights=[], tags=[], filt=[]):
 		self.attributes = [False, False, False, False, False]
-		self.weights = [Weight.H, Weight.H, Weight.H, Weight.H, Weight.H]
+		self.weights = [Weight.N, Weight.N, Weight.N, Weight.N, Weight.N]
 		# do some typechecking here...
-		self.tags = tags
+		self.tags = []
 		self.filt = []
 
-		for i in range(5):
-			if len(weights) != 5:
-				raise Exception("need to have 5 attributes in a clothing item")
+		for i in range(len(weights)):
 			self.weights[i] = (weights[i])
 
-		for i in range(5):
-			if len(attr) != 5:
-				raise Exception("need to have 5 attributes in a clothing item")
+		for i in range(len(weights)):
 			self.attributes[i] = (attr[i])
 
 		for x in tags:
 			if not isinstance(x, Tags):
 				raise TypeError("tags must be set to Tags type")
+			self.tags.append(x)
 
 		for x in filt:
 			if not isinstance(x, int):
 				raise TypeError("filtered out must be integers")
 			self.filt.append(x)
+
+	def __str__(self):
+		simple = "simple" if self.attributes[0] else "gorgeous"
+		lively = "lively" if self.attributes[1] else "elegant"
+		cute = "cute" if self.attributes[2] else "mature"
+		pure = "pure" if self.attributes[3] else "sexy"
+		cool = "cool" if self.attributes[4] else "warm"
+
+		name = "Target:"
+		s = simple+":{d[0]} "+lively+":{d[1]} "+ cute+":{d[2]} "+ pure +":{d[3]} "+ cool +":{d[4]}"
+		stats = "{" + s.format(d=self.weights) + "}"
+		tags = str([*map(lambda t: t.name, self.tags)])
+
+		return name + "\t\t" + stats + "\t" + tags
 
 class Clothing:
 	# trues = simple, lively, cute, pure, cool
