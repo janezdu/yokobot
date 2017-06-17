@@ -3,6 +3,11 @@ import asyncio
 import csv
 import yokocalc as yoko
 import clothing
+import sys
+
+if len(sys.argv) < 2:
+	print ("Please pass in the bot token as a command line argument.")
+	sys.exit()
 
 hair = yoko.load_wardrobe('wardrobe/hair.csv')
 dresses = yoko.load_wardrobe('wardrobe/dresses.csv')
@@ -119,4 +124,4 @@ async def on_message(message):
 		await asyncio.sleep(5)
 		await client.send_message(message.channel, 'Done sleeping')
 
-client.run('MzI1MzA0ODU1NzcyMjY2NDk3.DCYW4g.TlunK2ZNenVBmtYOz8ogM3NiakI')
+client.run(sys.argv[1])
