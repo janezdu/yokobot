@@ -129,7 +129,7 @@ class Clothing:
 
 		return name + "\t\t" + stats + "\t" + tags
 
-	def weightedScore(self, target):
+	def weighted_score(self, target):
 		if self.id in target.filt:
 			return 0
 		score = 0
@@ -143,13 +143,13 @@ class Clothing:
 			score += value
 		return score
 
-pinky = Clothing(2, "Nikki's Pinky", 
-	[True, True, True, True, True],
-	[AStren.S, AStren.D, AStren.S, AStren.A, AStren.B],
-	[Tags.EUROP])
+# pinky = Clothing(2, "Nikki's Pinky", 
+# 	[True, True, True, True, True],
+# 	[AStren.S, AStren.D, AStren.S, AStren.A, AStren.B],
+# 	[Tags.EUROP])
 goal = Target(
 	[True, True, True, True, True],
 	[Weight.H, Weight.H,Weight.H, Weight.H, Weight.H], 
 	[Tags.MODCHN], [])
-print(pinky)
+# print(pinky)
 # print(pinky.weightedScore(goal))
