@@ -14,7 +14,7 @@ sdict = {
 }
 
 tdict = {
-	"Pop": Tags.POP
+	"Pop": Tags.POP,
 	"Winter": Tags.WINTER,
 	"Gothic": Tags.GOTHIC,
 	"Swordsman": Tags.SWORDS,
