@@ -152,7 +152,7 @@ class Clothing:
 				if targetTag in self.__tags:
 					value *= 10
 			if target.attributes[i] ^ self.__attributes[i]:
-				value *= -1
+				value = 0
 			score += value
 		return score
 
