@@ -134,7 +134,7 @@ async def on_message(message):
 		Source: github.com/janezdu/yokobot
 		Bug reports: Yell at @cyphra!
 		"""
-		await client.send_message(message.channel, "I'll have a yokobot guide soon!")
+		await client.send_message(message.channel, helpmessage)
 
 	elif message.content.startswith('!sleep'):
 		await asyncio.sleep(5)
