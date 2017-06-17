@@ -14,7 +14,7 @@ sdict = {
 }
 
 tdict = {
-	"POP": Tags.POP,
+	"Pop": Tags.POP
 	"Winter": Tags.WINTER,
 	"Gothic": Tags.GOTHIC,
 	"Swordsman": Tags.SWORDS,
@@ -108,6 +108,6 @@ def load_clothing(line):
 	return clothing.Clothing(itemnum, name, attr, stren, tags)
 
 
-wardrobe = load_wardrobe()
-ranking = rank_clothes(wardrobe, clothing.goal)
-print([*map(str, ranking)])
+# wardrobe = load_wardrobe()
+# ranking = rank_clothes(wardrobe, clothing.goal)
+# print([*map(str, ranking)])
