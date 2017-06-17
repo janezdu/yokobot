@@ -26,7 +26,7 @@ odict = {
 	'm': (2, False),
 	'p': (3, True),
 	'x': (3, False),
-	'c': (4, True),
+	'o': (4, True),
 	'w': (4, False)
 }
 
