@@ -1,12 +1,12 @@
 from enum import Enum, auto
 
 class AStren(Enum):
-	D = 1000
-	C = 1200
-	B = 1400
-	A = 1600
-	S = 1800
-	SS = 2000
+	D = 200
+	C = 500
+	B = 800
+	A = 1100
+	S = 1400
+	SS = 1700
 	F = 0
 
 class Tags(Enum):
