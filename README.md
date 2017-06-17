@@ -14,3 +14,8 @@ git clone https://github.com/janezdu/yokobot.git
 cd yokobot
 python3 basicbot.py
 ```
+
+## Upcoming
+* Print a variable number of items in each category
+* Scoring fine tuning
+* A stage guide
