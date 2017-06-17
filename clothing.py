@@ -150,7 +150,7 @@ class Clothing:
 			value = self.__strengths[i] * target.weights[i].value
 			for targetTag in target.tags:
 				if targetTag in self.__tags:
-					value *= 3
+					value *= 10
 			if target.attributes[i] ^ self.__attributes[i]:
 				value *= -1
 			score += value
