@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, auto
 
 class AStren(Enum):
 	D = 1000
@@ -10,23 +10,66 @@ class AStren(Enum):
 	F = 0
 
 class Tags(Enum):
-	CLASSCH = 1
-	MODCH = 2
-	EUROP = 3
-	WINTER = 4
+	POP = auto()
+	WINTER = auto()
+	GOTHIC = auto()
+	SWORDS = auto
+	ARMY = auto()
+	KIMONO = auto()
+	FLORAL = auto()
+	DANCER = auto()
+	DENIM = auto()
+	FAIRY = auto()
+	EVGOWN = auto()
+	LADY = auto()
+	ROCK = auto()
+	LOLITA = auto()
+	NAVY = auto()
+	MAIDEN = auto()
+	SHOWER = auto()
+	BUNNY = auto()
+	PARAM = auto()
+	UNISEX = auto()
+	BOHEMIA = auto()
+	SWIMSUIT = auto()
+	PREPPY = auto()
+	SPORTS = auto()
+	HOME = auto()
+	SUN = auto()
+	CHNCLASS = auto()
+	APRON = auto()
+	PET = auto()
+	TRAD = auto()
+	GODDESS = auto()
+	BRITAIN = auto()
+	OFFICE = auto()
+	RAIN = auto()
+	WEDDING = auto()
+	EUROP = auto()
+	HINDU = auto()
+	PAJAMAS = auto()
+	REPCHN = auto()
+	QIPAO = auto()
+	KOREAN = auto()
+	MODCHN = auto()
+	DRYAD = auto()
+	FUTURE = auto()
+	HARAJUKU = auto()
+	
+
 
 class Weight(Enum):
-	H = 3
-	M = 2
+	H = 1.7
+	M = 1.3
 	L = 1
 
 class Target:
-	def __init__(self, attr, weights, tags):
+	def __init__(self, attr, weights, tags, filt):
 		self.attributes = [False, False, False, False, False]
 		self.weights = [Weight.H, Weight.H, Weight.H, Weight.H, Weight.H]
 		# do some typechecking here...
 		self.tags = tags
-
+		self.filt = []
 
 		for i in range(5):
 			if len(weights) != 5:
@@ -41,6 +84,12 @@ class Target:
 		for x in tags:
 			if not isinstance(x, Tags):
 				raise TypeError("tags must be set to Tags type")
+
+		for x in filt:
+			if not isinstance(x, int):
+				raise TypeError("filtered out must be integers")
+			self.filt.append(x)
+
 class Clothing:
 	# trues = simple, lively, cute, pure, cool
 
@@ -73,10 +122,16 @@ class Clothing:
 		pure = "pure" if self.__attributes[3] else "sexy"
 		cool = "cool" if self.__attributes[4] else "warm"
 
-		s = simple+" %d"+lively+" %d"+cute+" %d"+ pure +" %d"+ cool +" %d"
-		return s % self.__strengths
+		name = self.name+"(#"+str(self.id) + ")"
+		s = simple+":{d[0]} "+lively+":{d[1]} "+ cute+":{d[2]} "+ pure +":{d[3]} "+ cool +":{d[4]}"
+		stats = "{" + s.format(d=self.__strengths) + "}"
+		tags = str([*map(lambda t: t.name, self.__tags)])
+
+		return name + "\t\t" + stats + "\t" + tags
 
 	def weightedScore(self, target):
+		if self.id in target.filt:
+			return 0
 		score = 0
 		for i in range(5):
 			value = self.__strengths[i] * target.weights[i].value
@@ -88,13 +143,13 @@ class Clothing:
 			score += value
 		return score
 
-# pinky = Clothing(2, "Nikki's Pinky", 
-# 	[True, True, True, True, True],
-# 	[AStren.S, AStren.D, AStren.S, AStren.A, AStren.B],
-# 	[Tags.EUROP])
-# goal = Target(
-# 	[True, True, True, True, True],
-# 	[Weight.H, Weight.H,Weight.H, Weight.H, Weight.H], 
-# 	[Tags.MODCH])
-
+pinky = Clothing(2, "Nikki's Pinky", 
+	[True, True, True, True, True],
+	[AStren.S, AStren.D, AStren.S, AStren.A, AStren.B],
+	[Tags.EUROP])
+goal = Target(
+	[True, True, True, True, True],
+	[Weight.H, Weight.H,Weight.H, Weight.H, Weight.H], 
+	[Tags.MODCHN], [])
+print(pinky)
 # print(pinky.weightedScore(goal))
