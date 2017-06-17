@@ -4,15 +4,15 @@ import csv
 import yokocalc as yoko
 import clothing
 
-hair = yoko.load_wardrobe('hair.csv')
-dresses
-coats
-tops 
-bottoms
-hosiery
-shoes 
-accessories
-makeup
+hair = yoko.load_wardrobe('wardrobe/hair.csv')
+dresses = yoko.load_wardrobe('wardrobe/dresses.csv')
+coats = yoko.load_wardrobe('wardrobe/coats.csv')
+tops = yoko.load_wardrobe('wardrobe/tops.csv')
+bottoms = yoko.load_wardrobe('wardrobe/bottoms.csv')
+hosiery = yoko.load_wardrobe('wardrobe/hosiery.csv')
+shoes = yoko.load_wardrobe('wardrobe/shoes.csv')
+accessories = yoko.load_wardrobe('wardrobe/accessories.csv')
+makeup = yoko.load_wardrobe('wardrobe/makeup.csv')
 
 
 
@@ -74,26 +74,43 @@ async def on_message(message):
 		target = clothing.Target()
 		
 		for i in range(len(options)):
-			if options[i].lower() in odict and options[i+1].lower() in wdict:
+			if options[i].lower() in odict and i < len(options)-1 and options[i+1].lower() in wdict:
 				idx = odict[options[i].lower()][0]
 				direc = odict[options[i].lower()][1]
 				weight = wdict[options[i+1].lower()]
 
 				target.attributes[idx] = direc
 				target.weights[idx] = weight
-				i += 1
 				
 			elif options[i].lower() in yoko.tdict and len(target.tags) < 2:
-				tag = clothing.tdict[options[i].lower()]
+				tag = yoko.tdict[options[i].lower()]
 				target.tags.append(tag)
 
 		choice = "[ERROR] uh oh! Go yell at @cyphra!"
 		tmp = await client.send_message(message.channel, 'Calculating outfit...')	
 		
 		print(target)
-		choice = str(yoko.rank_clothes(wr, target)[:5])
+		cHair = str(yoko.rank_clothes(hair, target)[:5])
+		cDress = str(yoko.rank_clothes(dresses, target)[:5])
+		cCoats = str(yoko.rank_clothes(coats, target)[:5]) 
+		cTops = str(yoko.rank_clothes(tops, target)[:5])
+		cBott = str(yoko.rank_clothes(bottoms, target)[:5])
+		cHosi = str(yoko.rank_clothes(hosiery, target)[:5])
+		cShoes = str(yoko.rank_clothes(shoes, target)[:5])
+		cMakeup = str(yoko.rank_clothes(makeup, target)[:5])
+
 		
-		await client.edit_message(tmp, 'I recommend... {}'.format(choice))
+		await client.edit_message(tmp, 
+			"""I recommend... \n
+			Hair: \t{}\n
+			Dress: \t{}\n
+			Coats: \t{}\n
+			Tops: \t{}\n
+			Bottoms: \t{}\n
+			Hosiery: \t{}\n
+			Shoes: \t{}\n
+			Makeup: \t{}\n 
+			""".format(cHair, cDress, cCoats, cTops, cBott, cHosi, cShoes, cMakeup))
 
 	elif message.content.startswith('!yoko'):
 		await client.send_message(message.channel, "I'll have a yokobot guide soon!")

@@ -55,6 +55,7 @@ class Tags(Enum):
 	DRYAD = auto()
 	FUTURE = auto()
 	HARAJUKU = auto()
+	ETHNIC = auto()
 	
 
 
