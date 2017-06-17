@@ -17,5 +17,6 @@ python3 basicbot.py
 
 ## Upcoming
 * Print a variable number of items in each category
+* Detailed accessory categories
 * Scoring fine tuning
 * A stage guide
