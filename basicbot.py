@@ -102,20 +102,22 @@ async def on_message(message):
 		cBott = str(yoko.rank_clothes(bottoms, target)[:5])
 		cHosi = str(yoko.rank_clothes(hosiery, target)[:5])
 		cShoes = str(yoko.rank_clothes(shoes, target)[:5])
+		cAcce = str(yoko.rank_clothes(accessories, target)[:5])
 		cMakeup = str(yoko.rank_clothes(makeup, target)[:5])
 
 		
 		await client.edit_message(tmp, 
-			"""I recommend... \n
-			Hair: \t{}\n
-			Dress: \t{}\n
-			Coats: \t{}\n
-			Tops: \t{}\n
-			Bottoms: \t{}\n
-			Hosiery: \t{}\n
-			Shoes: \t{}\n
-			Makeup: \t{}\n 
-			""".format(cHair, cDress, cCoats, cTops, cBott, cHosi, cShoes, cMakeup))
+			"""I recommend... 
+			Hair: \t{}
+			Dress: \t{}
+			Coats: \t{}
+			Tops: \t{}
+			Bottoms: \t{}
+			Hosiery: \t{}
+			Shoes: \t{}
+			Accessories: \t{}
+			Makeup: \t{}
+			""".format(cHair, cDress, cCoats, cTops, cBott, cHosi, cShoes, cAcce, cMakeup))
 
 	elif message.content.startswith('!yoko'):
 		await client.send_message(message.channel, "I'll have a yokobot guide soon!")
