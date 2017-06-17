@@ -3,9 +3,18 @@ import asyncio
 import csv
 import yokocalc as yoko
 import clothing
-from pprint import pprint
 
-wr = yoko.load_wardrobe('hair.csv')	
+hair = yoko.load_wardrobe('hair.csv')
+dresses
+coats
+tops 
+bottoms
+hosiery
+shoes 
+accessories
+makeup
+
+
 
 odict = {
 	'simple': (0,True),
@@ -74,8 +83,8 @@ async def on_message(message):
 				target.weights[idx] = weight
 				i += 1
 				
-			elif options[i].title in yoko.tdict and len(target.tags) < 2:
-				tag = clothing.tdict[options[i].Title()]
+			elif options[i].lower() in yoko.tdict and len(target.tags) < 2:
+				tag = clothing.tdict[options[i].lower()]
 				target.tags.append(tag)
 
 		choice = "[ERROR] uh oh! Go yell at @cyphra!"
