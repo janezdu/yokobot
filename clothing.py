@@ -1,4 +1,4 @@
-from enum import Enum, auto
+from enum import Enum
 
 class AStren(Enum):
 	D = 200
