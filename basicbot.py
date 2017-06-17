@@ -19,8 +19,6 @@ shoes = yoko.load_wardrobe('wardrobe/shoes.csv')
 accessories = yoko.load_wardrobe('wardrobe/accessories.csv')
 makeup = yoko.load_wardrobe('wardrobe/makeup.csv')
 
-
-
 odict = {
 	'simple': (0,True),
 	'gorgeous': (0,False),
@@ -120,6 +118,22 @@ async def on_message(message):
 			""".format(cHair, cDress, cCoats, cTops, cBott, cHosi, cShoes, cAcce, cMakeup))
 
 	elif message.content.startswith('!yoko'):
+		helpmessage = """ Hi there! I'm Yoko, and when I'm finished, I'll give better tips than momo ;)
+		Current commands: 
+		* !yoko guide [attribute weight]* [tags]*
+			- Prints out the top 5 recommendations in each category of clothing
+			- Example 1: !yoko guide simple H elegant L cool M mature M pure L european
+			- Example 2: !yoko cute H sexy H lolita
+		* !yoko
+			- Prints out this help message.
+
+		Coming soon:
+		* Print more than 5 items
+		* Accessory categorization!
+
+		Source: github.com/janezdu/yokobot
+		Bug reports: Yell at @cyphra!
+		"""
 		await client.send_message(message.channel, "I'll have a yokobot guide soon!")
 
 	elif message.content.startswith('!sleep'):
