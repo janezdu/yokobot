@@ -66,21 +66,18 @@ tdict = {
 }
 
 def rank_clothes(wardrobe, target):
-	print(wardrobe)
-	scores = {}
-	for c in wardrobe:
-		scores[c.id] = c.weightedScore(target)
-	return sorted(scores, key=scores.__getitem__)
-
+	return sorted(list(wardrobe), 
+		key=lambda x: wardrobe[x].weighted_score(target),
+		reverse=True)
 
 def load_wardrobe(filename = 'hair.csv'):
-	wardrobe = []
+	wardrobe = {}
 	with open(filename) as csvfile:
 		raw = csv.reader(csvfile, delimiter=',')
 		for line in raw:
 			newclothing = load_clothing(line)
 			if newclothing != None:
-				wardrobe.append(newclothing)
+				wardrobe[newclothing.name] = newclothing
 	return wardrobe
 
 def load_clothing(line):
@@ -107,7 +104,10 @@ def load_clothing(line):
 	if line[14] != '':
 		tags.append(tdict[line[14]])
 
+	x = clothing.Clothing(itemnum, name, attr, stren, tags)
 	return clothing.Clothing(itemnum, name, attr, stren, tags)
 
 
-print(rank_clothes(load_wardrobe(), clothing.goal))
+wardrobe = load_wardrobe()
+ranking = rank_clothes(wardrobe, clothing.goal)
+print([*map(str, ranking)])
