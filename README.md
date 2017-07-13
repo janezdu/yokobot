@@ -19,8 +19,5 @@ cd yokobot
 python3 basicbot.py
 ```
 
-## Upcoming
-* Print a variable number of items in each category
-* Detailed accessory categories
-* Scoring fine tuning
-* A stage guide
+## Contribute
+Check out [issues](https://github.com/janezdu/yokobot/issues) to see what's going on. Also feel free to contact me on discord at @cyphra#6416.
