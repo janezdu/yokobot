@@ -1,1 +1,85 @@
-Hello, World!
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script><p>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Custom')" id="defaultOpen">Custom</button>
+  <button class="tablinks" onclick="openCity(event, 'Stage')">Stage</button>
+</div>
+
+<div id="Custom" class="tabcontent">
+  <h3>Select your attributes for custom attributes</h3>
+  <div class="attributes">
+    <div>
+      <input type="radio" name="simplicity" value="0">simple
+      <input type="radio" name="simplicity" value="1">gorgeous
+      <select id="simpleweight">
+        <option value="3">h</option>
+        <option value="2">m</option>
+        <option value="1">l</option>
+      </select>
+    </div>
+
+    <div>
+      <input type="radio" name="liveliness" value="0">lively
+      <input type="radio" name="liveliness" value="1">elegant
+      <select id="livelyweight">
+        <option value="3">h</option>
+        <option value="2">m</option>
+        <option value="1">l</option>
+      </select>
+    </div>
+    <div>
+      <input type="radio" name="cuteness" value="0">cute
+      <input type="radio" name="cuteness" value="1">mature
+      <select id="cuteweight">
+        <option value="3">h</option>
+        <option value="2">m</option>
+        <option value="1">l</option>
+      </select>
+    </div>
+    <div>
+      <input type="radio" name="pureness" value="0">pure
+      <input type="radio" name="pureness" value="1">sexy
+      <select id="pureweight">
+        <option value="3">h</option>
+        <option value="2">m</option>
+        <option value="1">l</option>
+      </select>
+    </div>
+    <div>
+      <input type="radio" name="coolness" value="0">cool
+      <input type="radio" name="coolness" value="1">warm
+      <select id="coolweight">
+        <option value="3">h</option>
+        <option value="2">m</option>
+        <option value="1">l</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="tag">
+    <input type="checkbox" name="tag" value="CHNCL">Chinese Classical
+    <input type="checkbox" name="tag" value="GOTHIC">Gothic
+    <input type="checkbox" name="tag" value="NAVY">Navy
+  </div>
+  <button onclick="sortCustomStage()">Calculate</button>
+</div>
+
+<div id="Stage" class="tabcontent">
+  <h3>Preselected Stage Attributes</h3>
+  <select id="act" name="act">
+    <option>Act 1</option>
+    <option>Stylist Arena</option>
+  </select>
+  <select id="level" name="level">
+    <option>1-1</option>
+    <option>1-2</option>
+  </select>
+  <button onclick="sortPresetStage()">Calculate</button>
+</div>
+
+<div id="outfitTable">
+  <div class="outputcat" id="outHair"><ul></ul></div>
+  <div class="outputcat" id="outAnklet"><ul></ul></div>
+  <div class="outputcat" id="outSocks"><ul></ul></div>
+</div>
